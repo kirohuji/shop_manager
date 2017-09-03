@@ -1,12 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<p>404错误</p>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Homepage</title>
+		<script src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
+		<script src="<%=request.getContextPath()%>/template/semantic/dist/semantic.min.js"></script>
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/template/semantic/dist/semantic.min.css">
+	</head>
+	<body>
+		<!-- Page Contents 页面内容-->
+		<div class="pusher">
+			  <h2 class="ui header center aligned">Page Not Found</h2> 
+		</div>
+	</body>
 </html>
