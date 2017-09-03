@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pero.kirohuji.dao.StoreMapper" >
+  <resultMap id="BaseResultMap" type="pero.kirohuji.entity.Store" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="shop_id" property="shop_id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="create_date" property="create_date" jdbcType="TIMESTAMP" />
+    <result column="web_site" property="web_site" jdbcType="VARCHAR" />
+    <result column="vendor_id" property="vendor_id" jdbcType="INTEGER" />
+    <result column="is_open" property="is_open" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shop_id, name, description, create_date, web_site, vendor_id, is_open
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from store
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from store
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pero.kirohuji.entity.Store" >
+    insert into store (id, shop_id, name, 
+      description, create_date, web_site, 
+      vendor_id, is_open)
+    values (#{id,jdbcType=INTEGER}, #{shop_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{create_date,jdbcType=TIMESTAMP}, #{web_site,jdbcType=VARCHAR}, 
+      #{vendor_id,jdbcType=INTEGER}, #{is_open,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="pero.kirohuji.entity.Store" >
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shop_id != null" >
+        shop_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="create_date != null" >
+        create_date,
+      </if>
+      <if test="web_site != null" >
+        web_site,
+      </if>
+      <if test="vendor_id != null" >
+        vendor_id,
+      </if>
+      <if test="is_open != null" >
+        is_open,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shop_id != null" >
+        #{shop_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null" >
+        #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="web_site != null" >
+        #{web_site,jdbcType=VARCHAR},
+      </if>
+      <if test="vendor_id != null" >
+        #{vendor_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_open != null" >
+        #{is_open,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pero.kirohuji.entity.Store" >
+    update store
+    <set >
+      <if test="shop_id != null" >
+        shop_id = #{shop_id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="create_date != null" >
+        create_date = #{create_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="web_site != null" >
+        web_site = #{web_site,jdbcType=VARCHAR},
+      </if>
+      <if test="vendor_id != null" >
+        vendor_id = #{vendor_id,jdbcType=INTEGER},
+      </if>
+      <if test="is_open != null" >
+        is_open = #{is_open,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pero.kirohuji.entity.Store" >
+    update store
+    set shop_id = #{shop_id,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      create_date = #{create_date,jdbcType=TIMESTAMP},
+      web_site = #{web_site,jdbcType=VARCHAR},
+      vendor_id = #{vendor_id,jdbcType=INTEGER},
+      is_open = #{is_open,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

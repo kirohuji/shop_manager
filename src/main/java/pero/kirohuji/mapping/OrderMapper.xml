@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pero.kirohuji.dao.OrderMapper" >
+  <resultMap id="BaseResultMap" type="pero.kirohuji.entity.Order" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="address_id" property="address_id" jdbcType="INTEGER" />
+    <result column="order_status_id" property="order_status_id" jdbcType="INTEGER" />
+    <result column="customer_id" property="customer_id" jdbcType="INTEGER" />
+    <result column="store_id" property="store_id" jdbcType="INTEGER" />
+    <result column="z_id" property="z_id" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, address_id, order_status_id, customer_id, store_id, z_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pero.kirohuji.entity.Order" >
+    insert into order (id, address_id, order_status_id, 
+      customer_id, store_id, z_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{address_id,jdbcType=INTEGER}, #{order_status_id,jdbcType=INTEGER}, 
+      #{customer_id,jdbcType=INTEGER}, #{store_id,jdbcType=INTEGER}, #{z_id,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pero.kirohuji.entity.Order" >
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="address_id != null" >
+        address_id,
+      </if>
+      <if test="order_status_id != null" >
+        order_status_id,
+      </if>
+      <if test="customer_id != null" >
+        customer_id,
+      </if>
+      <if test="store_id != null" >
+        store_id,
+      </if>
+      <if test="z_id != null" >
+        z_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="address_id != null" >
+        #{address_id,jdbcType=INTEGER},
+      </if>
+      <if test="order_status_id != null" >
+        #{order_status_id,jdbcType=INTEGER},
+      </if>
+      <if test="customer_id != null" >
+        #{customer_id,jdbcType=INTEGER},
+      </if>
+      <if test="store_id != null" >
+        #{store_id,jdbcType=INTEGER},
+      </if>
+      <if test="z_id != null" >
+        #{z_id,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pero.kirohuji.entity.Order" >
+    update order
+    <set >
+      <if test="address_id != null" >
+        address_id = #{address_id,jdbcType=INTEGER},
+      </if>
+      <if test="order_status_id != null" >
+        order_status_id = #{order_status_id,jdbcType=INTEGER},
+      </if>
+      <if test="customer_id != null" >
+        customer_id = #{customer_id,jdbcType=INTEGER},
+      </if>
+      <if test="store_id != null" >
+        store_id = #{store_id,jdbcType=INTEGER},
+      </if>
+      <if test="z_id != null" >
+        z_id = #{z_id,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pero.kirohuji.entity.Order" >
+    update order
+    set address_id = #{address_id,jdbcType=INTEGER},
+      order_status_id = #{order_status_id,jdbcType=INTEGER},
+      customer_id = #{customer_id,jdbcType=INTEGER},
+      store_id = #{store_id,jdbcType=INTEGER},
+      z_id = #{z_id,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
